@@ -10,5 +10,6 @@ public class ProductsNewDTO {
     private String productname;
     private String provider;
     private  String productValue;
+    private String imageUrl;
 
 }

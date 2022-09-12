@@ -18,6 +18,7 @@ public class Products {
     private String productname;
     private String provider;
     private  String productValue;
+    private String imageUrl;
 
 
 }

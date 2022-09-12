@@ -32,7 +32,7 @@ public class ProductsResourceTest extends AplicationConfingTest {
     @Test
     @WithMockUser(username="admin",roles={"ADMIN"})
     public void testSalva() throws JsonProcessingException {
-        var productsNewDTO = new ProductsNewDTO("Xadrez","americanas","98,03");
+        var productsNewDTO = new ProductsNewDTO("Xadrez","americanas","98,03",null);
 
 
         try {

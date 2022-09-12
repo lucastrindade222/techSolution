@@ -19,7 +19,7 @@ public class ProductsServiceTest extends AplicationConfingTest {
 
     @Test
     public void save(){
-         var product = new Products(null,"Xadrez","americanas","98,03");
+         var product = new Products(null,"Xadrez","americanas","98,03",null);
          product = productsService.save(product);
 
     }
