@@ -2,7 +2,7 @@ package br.com.lucasdevjava.techSolution.service;
 
 
 import br.com.lucasdevjava.techSolution.config.AplicationConfingTest;
-import br.com.lucasdevjava.techSolution.model.User;
+import br.com.lucasdevjava.techSolution.model.Admin;
 import br.com.lucasdevjava.techSolution.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,18 +28,15 @@ public class UserServiceTest  extends AplicationConfingTest {
 
 
         try {
-            userService.checkEmailExists("lucas@email.com");
-            Assertions.fail();
-        }catch (Exception e){
-            Assertions.assertEquals(e.getMessage(),"O e-mail já existe no sistema.");
+            userService.checkEmailExists("lucasEx@email.com");
+            Assertions.fail("ERRO o email não existe no sistema");
+        }catch (Exception exception){
+            Assertions.assertEquals(exception.getMessage(),"O e-mail já existe no sistema.");
         }
 
 
     }
-    @Test
-    public  void teste(){
 
-    }
 
 
 
@@ -49,8 +46,11 @@ public class UserServiceTest  extends AplicationConfingTest {
 
     @BeforeEach
     public void setup() {
-        var user = new User(  "lucas@email.com", "password123","nome",url);
+        var user = new Admin("lucasEx@email.com", "password123","name","surname",url);
         Mockito.when(userRepository.findByEmail(user.getEmail())).thenReturn(user);
+
+
+
     }
 
 }

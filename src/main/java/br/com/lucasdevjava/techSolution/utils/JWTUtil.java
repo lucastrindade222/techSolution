@@ -47,7 +47,7 @@ public class JWTUtil {
 
 	}
 
-	public Integer getIdDoUsuario(String token) {
+	public Integer getIdByToken(String token) {
 		Claims claims = getClaims(token);
 		if (claims != null) {
 			return Integer.parseInt(claims.get("id").toString());
@@ -95,6 +95,12 @@ public class JWTUtil {
 
 	public String getTokenFromRequest(HttpServletRequest request) {
 		return request.getHeader("Authorization").replace("Bearer ", "");
+	}
+
+	public Integer  getIdByRequest(HttpServletRequest request){
+	String token =	this.getTokenFromRequest(request);
+		Integer idUser = this.getIdByToken(token);
+	return  idUser;
 	}
 
 }

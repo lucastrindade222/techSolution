@@ -7,6 +7,8 @@ import br.com.lucasdevjava.techSolution.model.Client;
 import br.com.lucasdevjava.techSolution.model.Role;
 import br.com.lucasdevjava.techSolution.repository.ClientRepository;
 import br.com.lucasdevjava.techSolution.repository.RoleRepository;
+import br.com.lucasdevjava.techSolution.repository.UserRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,6 +33,7 @@ public class ClientServiceTest extends AplicationConfingTest {
 
 
 
+
     @Test
     public void save(){
         var cliente = new Client(  "lucasDevJava@email.com", "password123","lucas","Lucasjava",url);
@@ -41,9 +44,11 @@ public class ClientServiceTest extends AplicationConfingTest {
 
     @BeforeEach
     public void setup() {
+
+
         var role = new Role();
-        role.setNameRole(Profile.CLIENT.getDescription());
-        Mockito.when(roleRepositoy.findBynameRole(Profile.CLIENT.getDescription())).thenReturn(role);
+        role.setNomeRole(Profile.CLIENT.getDescription());
+        Mockito.when(roleRepositoy.findBynomeRole(Profile.CLIENT.getDescription())).thenReturn(role);
     }
 
 

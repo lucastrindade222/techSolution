@@ -21,7 +21,9 @@ public class Person extends User{
     @Embedded
     private Address endereco;
 
-    public Person(String email, String password, String name, String avatarUrl) {
+    public Person(String email, String password, String name,String lastName, String avatarUrl) {
         super(email, password,name, avatarUrl);
+        this.lastName = lastName;
+
     }
 }

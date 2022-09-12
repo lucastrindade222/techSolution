@@ -23,15 +23,17 @@ public class AdminResource {
     private AdminService adminService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Admin> save(@Validated @RequestBody AdminNewDTO adminNewDTO){
       var admin = modelMapper.map(adminNewDTO, Admin.class);
       admin = adminService.save(admin);
       return ResponseEntity.status(HttpStatus.CREATED).body(admin);
     }
-  @GetMapping("/teste")
+  @GetMapping("/searchMe")
   @PreAuthorize("hasAnyRole('ADMIN')")
-  public  ResponseEntity<String> test(){
-        return  ResponseEntity.ok().body("Tudo ok aqui");
+  public  ResponseEntity<Admin> searchForMe(){
+       var admin= adminService.searchForMe();
+        return  ResponseEntity.ok().body(admin);
   }
 
 

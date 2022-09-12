@@ -13,11 +13,11 @@ import javax.persistence.Entity;
 public class Client extends Person {
     private static final long serialVersionUID = 1L;
 
-    private String about;
+    private String fantasyname;
 
-    public Client(String email, String password, String name,String about, String avatarUrl) {
-        super(email, password, name, avatarUrl);
-    this.about = about;
+    public Client(String email, String password, String name,String lastName, String avatarUrl) {
+        super(email, password, name,lastName, avatarUrl);
+
     }
 
 }

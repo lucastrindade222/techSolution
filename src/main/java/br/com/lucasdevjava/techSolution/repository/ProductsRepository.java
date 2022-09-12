@@ -1,15 +1,11 @@
 package br.com.lucasdevjava.techSolution.repository;
 
-
-import br.com.lucasdevjava.techSolution.model.Role;
+import br.com.lucasdevjava.techSolution.model.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-
+import java.util.UUID;
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer>, PagingAndSortingRepository<Role,Integer> {
-    Role findBynomeRole(String nomeRole);
-
-
+public interface ProductsRepository extends JpaRepository<Products, Integer>, PagingAndSortingRepository<Products,Integer> {
 }

@@ -45,7 +45,6 @@ public class DBServiceImpl implements DBService {
        this.createRole();
         }
 
-
         if (adminRepositoy.count()< 1){
       this.createUser();
         }
@@ -65,7 +64,7 @@ public class DBServiceImpl implements DBService {
 
         for (var profile:Profile.values()) {
             Role role = new Role();
-            role.setNameRole(profile.getDescription());
+            role.setNomeRole(profile.getDescription());
             roleRepositoy.save(role);
             out.println("\n Create "+profile.getDescription());
         }
@@ -77,7 +76,7 @@ public class DBServiceImpl implements DBService {
     public void createUser() {
        out.println("-Create user....");
 
-        var admin =new  Admin("lucas@gmail.com","1234560","lucas","java",image);
+        var admin =new  Admin("lucasdevjava@gmail.com","123456","lucas","java",image);
         adminService.save(admin);
 
        out.println("\nCreate end user-");

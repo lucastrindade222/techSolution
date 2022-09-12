@@ -17,7 +17,7 @@ public class RoleService {
 
    public Role findByName(String name){
 
-      Role role = roleRepositoy.findBynameRole(name);
+      Role role = roleRepositoy.findBynomeRole(name);
 
       if(role == null){
           throw new ObjectNotFoundException("não encontrado");

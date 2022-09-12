@@ -47,7 +47,7 @@ public class AdminServiceTest extends AplicationConfingTest {
 
 
         var role = new Role();
-        role.setNameRole(Profile.ADMIN.getDescription());
-        Mockito.when(roleRepositoy.findBynameRole(Profile.ADMIN.getDescription())).thenReturn(role);
+        role.setNomeRole(Profile.ADMIN.getDescription());
+        Mockito.when(roleRepositoy.findBynomeRole(Profile.ADMIN.getDescription())).thenReturn(role);
     }
 }
