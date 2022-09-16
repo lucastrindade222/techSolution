@@ -31,6 +31,5 @@ public class ClientServiceImpl implements ClientService {
         var role=   roleService.findByName(Profile.CLIENT.getDescription());
         client.setRole(asList(role));
         return clientRepository.save(client);
-
     }
 }

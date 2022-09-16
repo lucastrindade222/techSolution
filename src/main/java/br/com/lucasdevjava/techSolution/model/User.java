@@ -53,7 +53,6 @@ public abstract class User implements Serializable, UserDetails {
 		this.email = email;
 		this.password = password;
 		this.name = name;
-
 		this.avataarUri = avataarUri;
 	}
 
