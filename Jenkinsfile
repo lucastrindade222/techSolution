@@ -21,8 +21,12 @@ pipeline {
      }
     post {
        always {
-        cleanWs() 
+          junit(
+        allowEmptyResults: true,
+        testResults: '*/test-reports/.xml'
+      )
       }
-   }
+   } 
+
 
 }
