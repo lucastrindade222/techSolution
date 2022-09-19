@@ -1,26 +1,32 @@
-pipeline{
-  agent{label 'linux' }
-  tools {
-  maven '3.8.6'
-  jdk '11'
-  }
-
-  stages { 
-     stage ("Build") {
-        steps {
-           sh "mvn  -version"
-           sh "mvn clean install"
-        }
+pipeline {
+    agent any
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
     }
- }  
-  post{
-   always{
-     cleanWs() 
-   }
-
-  }
-
-
+    stages {
+        stage('Initialize'){
+            steps{
+                sh 'mvn --version' 
+                sh 'java --version'
+	   }
+        }
+        stage('Build') {
+            steps {
+                dir("/var/lib/jenkins/workspace/demopipelinetask/my-app") {
+                sh 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+     }
+    post {
+       always {
+          junit(
+        allowEmptyResults: true,
+        testResults: '*/test-reports/.xml'
+      )
+      }
+   } 
 }
 
 
