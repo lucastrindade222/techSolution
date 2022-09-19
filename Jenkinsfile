@@ -1,11 +1,12 @@
 pipeline{
   agent any
 
-  stages {
-   
-   steps{
-    sh "mvn  -version"
-    sh "mvn claen install"
+  stages { 
+     stage {
+        steps {
+           sh "mvn  -version"
+           sh "mvn clean install"
+        }
     }
  }  
   post{
