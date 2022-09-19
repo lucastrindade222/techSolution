@@ -1,8 +1,8 @@
 pipeline{
   agent any
 
-  stages ("Build") { 
-     stage {
+  stages { 
+     stage ("Build") {
         steps {
            sh "mvn  -version"
            sh "mvn clean install"
