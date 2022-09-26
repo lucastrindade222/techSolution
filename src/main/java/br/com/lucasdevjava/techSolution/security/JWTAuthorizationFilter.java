@@ -4,15 +4,18 @@ import java.io.IOException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.lucasdevjava.techSolution.security.exception.ProxyAuthenticationRequired;
 import br.com.lucasdevjava.techSolution.security.exception.Unauthorized;
+import br.com.lucasdevjava.techSolution.service.exception.GenericException;
 import br.com.lucasdevjava.techSolution.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -47,9 +50,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 			authenticationToken	 =  getAuthenticationToken(request);
 		
 		} catch (IllegalArgumentException e) {
-	     	throw  new ProxyAuthenticationRequired("Unable to get JWT Token");
+			onAuthenticationFailure(response,"Unable to get JWT Token.","Unable to get JWT Token.");
 		} catch (ExpiredJwtException e) {
-			throw  new Unauthorized("Unable to get JWT Token");
+			onAuthenticationFailure(response,"JWT expirou","JWT expired.");
 		}
 		
 
@@ -68,5 +71,22 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
 		return username != null ? new UsernamePasswordAuthenticationToken(username,"", userDetails.getAuthorities())
 				: null;
+	}
+
+
+
+	public void onAuthenticationFailure(HttpServletResponse response,String  message,String error) throws IOException, ServletException {
+
+
+		var genericException =	 GenericException
+				.builder()
+				.error(error)
+				.message(message)
+				.path("/api/v1/login")
+				.status(401)
+				.build();
+		response.setStatus(401);
+		response.setContentType("application/json");
+		response.getWriter().append(genericException.tojson());
 	}
 }

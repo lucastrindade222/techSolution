@@ -57,7 +57,9 @@ public class ClientResourceTest extends AplicationConfingTest {
                 )
                 .andExpect(MockMvcResultMatchers.status().isCreated());
 
+
     }
+
    @Test
     public void testExceptionBAD_REQUEST() throws JsonProcessingException, Exception {
 

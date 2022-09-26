@@ -35,10 +35,6 @@ public abstract class User implements Serializable, UserDetails {
 
     private String name;
 
-
-
-
-
 	private String avataarUri;
 
 	@JsonIgnore

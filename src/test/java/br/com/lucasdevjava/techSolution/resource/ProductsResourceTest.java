@@ -6,7 +6,6 @@ import br.com.lucasdevjava.techSolution.repository.ProductsRepository;
 import br.com.lucasdevjava.techSolution.service.ProductsService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

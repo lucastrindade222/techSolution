@@ -24,6 +24,10 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
     @Override
+    public Client findById(Integer id) {
+        return null;
+    }
+    @Override
     public Client save(Client client) {
         userService.checkEmailExists(client.getEmail());
 
@@ -32,4 +36,6 @@ public class ClientServiceImpl implements ClientService {
         client.setRole(asList(role));
         return clientRepository.save(client);
     }
+
+
 }

@@ -9,7 +9,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.UUID;
 
-
+@Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor

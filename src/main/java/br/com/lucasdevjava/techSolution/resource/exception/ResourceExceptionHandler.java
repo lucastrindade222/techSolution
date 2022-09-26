@@ -1,6 +1,7 @@
 package br.com.lucasdevjava.techSolution.resource.exception;
 
 
+import br.com.lucasdevjava.techSolution.security.exception.Unauthorized;
 import br.com.lucasdevjava.techSolution.service.exception.GenericException;
 import br.com.lucasdevjava.techSolution.service.exception.ObjectNotFoundException;
 import br.com.lucasdevjava.techSolution.service.exception.UniqueFieldException;
@@ -40,5 +41,19 @@ public class ResourceExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(err);
     }
+
+    @ExceptionHandler(Unauthorized.class)
+    public ResponseEntity<GenericException> unauthorized(Unauthorized unauthorized, HttpServletRequest httpServletRequest){
+        var err = GenericException
+                .builder()
+                .message(unauthorized.getMessage())
+                .error("Unauthorized")
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .path( httpServletRequest.getContextPath()+httpServletRequest.getServletPath())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED.value()).body(err);
+    }
+
 
 }
